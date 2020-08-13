@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Module(includes = [GamesModule::class])
+@Module(includes = [GamesActivityModule::class,GamesModule::class])
 class GamesAppModule {
     @Singleton
     @Provides

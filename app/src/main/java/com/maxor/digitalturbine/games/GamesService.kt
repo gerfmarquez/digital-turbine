@@ -8,6 +8,8 @@ import retrofit2.http.GET
 
 interface GamesService {
 
+
+
     companion object {
         val baseUrl: String = "http://ads.appia.com/"
 
