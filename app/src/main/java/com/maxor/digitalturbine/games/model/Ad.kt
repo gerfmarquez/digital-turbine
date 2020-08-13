@@ -1,0 +1,30 @@
+package com.maxor.digitalturbine.games.model
+
+data class Ad(
+    val averageRatingImageURL: String?,
+    val isRandomPick: String?,
+    val clickProxyURL: String?,
+    val numberOfDownloads: String?,
+    val tstiEligible: String?,
+    val rating: String?,
+    val bidRate: String?,
+    val categoryName: String?,
+    val creativeId: String?,
+    val minOSVersion: String?,
+    val productName: String?,
+    val callToAction: String?,
+    val campaignDisplayOrder: String?,
+    val appId: String?,
+    val numberOfRatings: String?,
+    val campaignTypeId: String?,
+    val stiEnabled: String?,
+    val productDescription: String?,
+    val productId: String?,
+    val appPrivacyPolicyUrl: String?,
+    val campaignId: String?,
+    val homeScreen: String?,
+    val impressionTrackingURL: String?,
+    val postInstallActions: String?,
+    val billingTypeId: String?,
+    val productThumbnail: String?
+)
