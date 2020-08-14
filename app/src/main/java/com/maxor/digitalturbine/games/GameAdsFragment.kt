@@ -45,7 +45,7 @@ class GameAdsFragment : DaggerFragment() , GamesMvpContract.View {
 
     override fun showGamesFail() {
         val builder = AlertDialog.Builder(this.context)
-        builder.setMessage("Error Fetching Forecast").create().show()
+        builder.setMessage("Error Fetching Game Ads").create().show()
     }
 
 }

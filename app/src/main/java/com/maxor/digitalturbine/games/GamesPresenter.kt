@@ -42,7 +42,7 @@ class GamesPresenter @Inject constructor (private val gamesService: GamesService
     override fun cleanup() {
 
         for(disposable in disposables) {
-            if (disposable.isDisposed) {
+            if (!disposable.isDisposed) {
                 disposable.dispose()
             }
         }
