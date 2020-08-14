@@ -26,7 +26,7 @@ class GamesPresenter @Inject constructor (private val gamesService: GamesService
             10777,
             4230,
             "techtestsession",
-            10,
+            100,
             "Marquez").subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe( {response ->

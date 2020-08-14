@@ -2,36 +2,23 @@ package com.maxor.digitalturbine.games
 
 
 import android.os.Bundle
+import android.view.View
+import com.maxor.digitalturbine.R
 import com.maxor.digitalturbine.games.model.AdsResponse
 
 import dagger.android.support.DaggerAppCompatActivity
 
 import javax.inject.Inject
 
-class GamesActivity : DaggerAppCompatActivity(), GamesMvpContract.View {
-
-    @Inject
-    lateinit var gamesPresenter: GamesMvpContract.Presenter
+class GamesActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        gamesPresenter.bindView(this)
-        gamesPresenter.fetchGames()
-
+        setContentView(R.layout.activity_game_ads)
+    }
+    fun onGameAdClicked(view: View) {
+        val gameData : GameData = view.tag as GameData
+        startActivity(GameDetailActivity.newInstance(this,gameData))
     }
 
-    override fun onPause() {
-        super.onPause()
-
-        gamesPresenter.cleanup()
-    }
-
-    override fun showGames(gameData: List<GameData>) {
-
-    }
-
-    override fun showGamesFail() {
-
-    }
 }

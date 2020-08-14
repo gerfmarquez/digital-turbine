@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -24,11 +25,11 @@ class GameAdapter (val context: Context) :  ListAdapter<GameData, GameAdapter.Ga
     }
 ) {
 
-    class GameHolder(val gameRowLayout: LinearLayout) : RecyclerView.ViewHolder(gameRowLayout)
+    class GameHolder(val gameRowLayout: RelativeLayout) : RecyclerView.ViewHolder(gameRowLayout)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : GameHolder {
         val searchResultLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.game_result_list, parent, false) as LinearLayout
+            .inflate(R.layout.game_result_list, parent, false) as RelativeLayout
         return GameHolder(searchResultLayout)
     }
 
@@ -37,6 +38,8 @@ class GameAdapter (val context: Context) :  ListAdapter<GameData, GameAdapter.Ga
             .text = getItem(position).rating
         holder.gameRowLayout.findViewById<TextView>(R.id.tv_game_product_name)
             .text =  getItem(position).name
+
+        holder.gameRowLayout.tag = getItem(position)
 
         val imageView: ImageView = holder.gameRowLayout.findViewById(R.id.iv_game_thumbnail)
         Picasso.get().load(getItem(position).thumbnail).into(imageView)
