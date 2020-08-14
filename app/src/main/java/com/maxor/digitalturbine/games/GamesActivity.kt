@@ -27,11 +27,11 @@ class GamesActivity : DaggerAppCompatActivity(), GamesMvpContract.View {
         gamesPresenter.cleanup()
     }
 
-    override fun showGames(adsResponse: AdsResponse) {
-        System.out.println(adsResponse)
+    override fun showGames(gameData: List<GameData>) {
+
     }
 
     override fun showGamesFail() {
-        TODO("Not yet implemented")
+
     }
 }

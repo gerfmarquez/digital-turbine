@@ -29,21 +29,22 @@ class GamesPresenter @Inject constructor (private val gamesService: GamesService
             10,
             "Marquez").subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe( {
-                System.out.println(it)
-                view.showGames(it)
+            .subscribe( {response ->
+                view.showGames(response.ads.map {
+                    GameData(it.productId.toInt(),it.productName, it.productThumbnail,it.rating)
+                })
             }, {
-                System.out.println(it)
+                view.showGamesFail()
             })
         )
     }
 
     override fun cleanup() {
+
         for(disposable in disposables) {
             if (disposable.isDisposed) {
                 disposable.dispose()
             }
         }
-
     }
 }

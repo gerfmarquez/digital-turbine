@@ -4,7 +4,7 @@ import com.maxor.digitalturbine.games.model.AdsResponse
 
 interface GamesMvpContract {
     interface View {
-        fun showGames(adsResponse : AdsResponse)
+        fun showGames(gamedata : List<GameData>)
         fun showGamesFail()
     }
     interface Presenter {
