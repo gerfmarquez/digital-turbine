@@ -1,6 +1,6 @@
 package com.maxor.digitalturbine.games
 
-import com.maxor.digitalturbine.games.model.AdsResponse
+
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -37,6 +37,7 @@ class GamesPresenter @Inject constructor (private val gamesService: GamesService
                 view.showGamesFail()
             })
         )
+
     }
 
     override fun cleanup() {

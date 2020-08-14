@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.maxor.digitalturbine.R
+import com.maxor.digitalturbine.util.EspressoIdlingResource
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.games_view.view.*
+import org.jetbrains.annotations.TestOnly
 import javax.inject.Inject
 
 class GameAdsFragment : DaggerFragment() , GamesMvpContract.View {
@@ -23,6 +25,8 @@ class GameAdsFragment : DaggerFragment() , GamesMvpContract.View {
 
         gamePresenter.bindView(this)
         gamePresenter.fetchGames()
+
+        EspressoIdlingResource().increment()
 
         val layout : LinearLayout = inflater.inflate(R.layout.games_view,   container,  false) as LinearLayout
 
@@ -41,11 +45,15 @@ class GameAdsFragment : DaggerFragment() , GamesMvpContract.View {
     override fun showGames(gamedata: List<GameData>) {
         gameData = gameData
         gameAdapter?.submitList(gamedata)
+
+        EspressoIdlingResource().decrement()
     }
 
     override fun showGamesFail() {
         val builder = AlertDialog.Builder(this.context)
         builder.setMessage("Error Fetching Game Ads").create().show()
+
+        EspressoIdlingResource().decrement()
     }
 
 }
