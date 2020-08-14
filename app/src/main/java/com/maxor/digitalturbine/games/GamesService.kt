@@ -1,6 +1,6 @@
 package com.maxor.digitalturbine.games
 
-import com.maxor.digitalturbine.games.model.Base
+import com.maxor.digitalturbine.games.model.AdsResponse
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -27,11 +27,11 @@ interface GamesService {
         @Query("sessionId") sessionId : String,
         @Query("totalCampaignsRequested") totalCampaignsRequested : Int,
         @Query("lname") lname : String
-    ) : Single<Base>
+    ) : Single<AdsResponse>
 
 
     companion object {
-        val baseUrl: String = "http://ads.appia.com/"
+        val baseUrl: String = "https://ads.appia.com/"
 
         fun create(): GamesService {
             val httpClient = OkHttpClient.Builder()

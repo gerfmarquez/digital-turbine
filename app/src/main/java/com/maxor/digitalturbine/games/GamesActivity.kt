@@ -24,6 +24,11 @@ class GamesActivity : DaggerAppCompatActivity(){
                 10,
                 "Marquez").subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .subscribe( {
+                    System.out.println(it)
+                }, {
+                    System.out.println(it)
+                })
         }.start()
     }
 
