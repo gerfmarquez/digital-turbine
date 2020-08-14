@@ -1,35 +1,37 @@
 package com.maxor.digitalturbine.games
 
-import android.app.Activity
+
 import android.os.Bundle
-import dagger.android.DaggerActivity
+import com.maxor.digitalturbine.games.model.AdsResponse
+
 import dagger.android.support.DaggerAppCompatActivity
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+
 import javax.inject.Inject
 
-class GamesActivity : DaggerAppCompatActivity(){
+class GamesActivity : DaggerAppCompatActivity(), GamesMvpContract.View {
 
     @Inject
-    lateinit var gamesService: GamesService
+    lateinit var gamesPresenter: GamesMvpContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Thread {
-            gamesService.fetchGameAds(236,
-                "OVUJ1DJN",
-                10777,
-                4230,
-                "techtestsession",
-                10,
-                "Marquez").subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe( {
-                    System.out.println(it)
-                }, {
-                    System.out.println(it)
-                })
-        }.start()
+
+        gamesPresenter.bindView(this)
+        gamesPresenter.fetchGames()
+
     }
 
+    override fun onPause() {
+        super.onPause()
+
+        gamesPresenter.cleanup()
+    }
+
+    override fun showGames(adsResponse: AdsResponse) {
+        System.out.println(adsResponse)
+    }
+
+    override fun showGamesFail() {
+        TODO("Not yet implemented")
+    }
 }
