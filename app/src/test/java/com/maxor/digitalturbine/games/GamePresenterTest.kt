@@ -1,6 +1,7 @@
 package com.maxor.digitalturbine.games
 
 import com.maxor.digitalturbine.RxImmediateSchedulerRule
+import com.maxor.digitalturbine.games.model.Ad
 import com.maxor.digitalturbine.games.model.AdsResponse
 import io.reactivex.Single
 import org.junit.ClassRule
@@ -33,10 +34,16 @@ class WeatherPresenterTest {
 
     @Test
     fun presenterTestSuccessful() {
-        val gamesData  = listOf(GameData(
-            1234,"gamerush","thumbnail.png","4.5"))
+        val gamesData  = GameData(
+            1234,"gamerush","thumbnail.png","4.5")
 
-        val gameAdsResponse = AdsResponse(gamesData)
+        val gameAdsResponse = AdsResponse(
+            ads = mutableListOf(Ad(
+                productId = gamesData.productId,
+                productName = gamesData.name,
+                productThumbnail = gamesData.thumbnail,
+                rating = gamesData.rating)))
+
 
         `when`(gamesService.fetchGameAds(
             Mockito.anyInt(),
@@ -52,7 +59,7 @@ class WeatherPresenterTest {
         gamePresenter.fetchGames()
 
 
-        verify(gameView).showGames(gamesData)
+        verify(gameView).showGames(listOf(gamesData))
 
 
     }

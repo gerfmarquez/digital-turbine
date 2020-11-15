@@ -31,7 +31,10 @@ class GamesPresenter @Inject constructor (private val gamesService: GamesService
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe( {response ->
                 view.showGames(response.ads.map {
-                    GameData(it.productId.toInt(),it.productName, it.productThumbnail,it.rating)
+                    GameData(it.productId,
+                        it.productName,
+                        it.productThumbnail,
+                        it.rating)
                 })
             }, {
                 view.showGamesFail()

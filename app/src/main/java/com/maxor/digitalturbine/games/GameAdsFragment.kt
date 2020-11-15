@@ -30,9 +30,7 @@ class GameAdsFragment : DaggerFragment() , GamesMvpContract.View {
 
         val layout : LinearLayout = inflater.inflate(R.layout.games_view,   container,  false) as LinearLayout
 
-        val rvAdapter = GameAdapter(context!!)
-
-        gameAdapter = rvAdapter
+        gameAdapter =  GameAdapter(context!!)
         layout.rv_game_ads.adapter = gameAdapter
 
         return layout

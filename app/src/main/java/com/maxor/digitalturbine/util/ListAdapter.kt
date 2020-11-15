@@ -10,6 +10,4 @@ abstract class ListAdapter<T, V : RecyclerView.ViewHolder>(
 ) : ListAdapter<T, V>(
     AsyncDifferConfig.Builder<T>(diffCallback)
         .build()
-) {
-
-}
+)
