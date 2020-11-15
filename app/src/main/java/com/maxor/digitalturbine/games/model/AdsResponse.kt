@@ -8,7 +8,7 @@ import org.simpleframework.xml.Root
 @Root(strict = false, name="ads")
 data class AdsResponse (
     @field:ElementList(name="ad", inline = true, required = false)
-    @field:Element( name = "ad") var ads: MutableList<Ad> = mutableListOf(),
+    @field:Element( name = "ad") var ads: List<Ad> = mutableListOf(),
     @field:Element var totalCampaignsRequested: String = "",
     @field:Element var responseTime: String = "",
     @field:Element var version: String = "" )

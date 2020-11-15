@@ -38,11 +38,12 @@ class WeatherPresenterTest {
             1234,"gamerush","thumbnail.png","4.5")
 
         val gameAdsResponse = AdsResponse(
-            ads = mutableListOf(Ad(
+            ads = listOf(Ad(
                 productId = gamesData.productId,
                 productName = gamesData.name,
                 productThumbnail = gamesData.thumbnail,
-                rating = gamesData.rating)))
+                rating = gamesData.rating))
+        )
 
 
         `when`(gamesService.fetchGameAds(
