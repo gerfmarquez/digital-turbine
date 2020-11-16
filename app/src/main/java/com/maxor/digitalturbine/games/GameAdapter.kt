@@ -14,6 +14,12 @@ import com.maxor.digitalturbine.R
 import com.maxor.digitalturbine.util.ListAdapter
 import com.squareup.picasso.Picasso
 
+/** This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * Copyright 2020, Gerardo Marquez.
+ */
+
 class GameAdapter (val context: Context) :  ListAdapter<GameData, GameAdapter.GameHolder>(
     diffCallback =  object : DiffUtil.ItemCallback<GameData>() {
         override fun areItemsTheSame(oldItem: GameData, newItem: GameData): Boolean {
